@@ -8,8 +8,8 @@ client.on('ready', () => {
 var prefix = "&";
 client.on('message', message => { // Falsteni Is Here
     const responses = [
-    'yes', 'no', 'خليك في حالك', 'شفلك كلبه', 'sure', 'ask me later', 'Fuck you','شكرا' 'هلا' نورت' اني بخير وانت'
-    ]
+    'yes', 'no', 'sure', 'ask me later', 'Fuck you',
+      
         if(message.content.startsWith(prefix + 'q')) { // Falsteni Is Here
                 if(!message.channel.guild) return;
             let args = message.content.split(" ").slice(1); // Falsteni Is Heressss
@@ -65,10 +65,10 @@ const cool = [];
   if(args[0] !== `${prefix}credit` && args[0] !== `${prefix}credits`) return;
  
   if(args[2]) {
-    if(isNaN(args[2])) return message.channel.send('**:heavy_multiplication_x:| هذه الخانة يجب ان تتكون من ارقام وليس احرف.**');
-    if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]} لم يتم العثور على**`);
-    if(mention.id === message.author.id) return message.channel.send('**:heavy_multiplication_x:| لا يمكنك تحويل كردت لنفسك**');
-    if(credits[author].credits < balance) return message.channel.send('**:heavy_multiplication_x:| أنت لا تملك هذا القدر من الكردت**');
+    if(isNaN(args[2])) return message.channel.send('**:heavy_multiplication_x:| hi you.**');
+    if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]} no p**`);
+    if(mention.id === message.author.id) return message.channel.send('**:heavy_multiplication_x:| name**');
+    if(credits[author].credits < balance) return message.channel.send('**:heavy_multiplication_x:| credit**');
     var one = Math.floor(Math.random() * 9) + 1;
     var two = Math.floor(Math.random() * 9) + 1;
     var three = Math.floor(Math.random() * 9) + 1;
@@ -76,29 +76,29 @@ const cool = [];
  
     var number = `${one}${two}${three}${four}`;
    
-    message.channel.send(`**:heavy_dollar_sign:| \`${number}\`, أكتب الرقم للأستمرار**`).then(m => {
+    message.channel.send(`**:heavy_dollar_sign:| \`${number}\`,Type the number to continue**`).then(m => {
       message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(c => {
         if(c.first().content === number) {
           m.delete();
-          message.channel.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
+          message.channel.send(`**:atm:| ${message.author.username}, He converted \`${balance}\` لـ ${mention}**`);
           credits[author].credits += (-balance);
           credits[mention.id].credits += (+balance);
          
         } else if(c.first().content !== number) {
           m.delete();
-          message.channel.send(`** :money_with_wings: | تم الغاء الإرسال**`);
+          message.channel.send(`** :money_with_wings: | Sending canceled**`);
         }
       });
     });
   }
   if(!args[2]) {
-    if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]} لم يتم العثور على**`);
-    message.channel.send(`**:credit_card: | ${mention.username}, معك من الكردت **${credits[mention.id].credits}`);
+    if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]}fdffdf**`);
+    message.channel.send(`**:credit_card: | ${mention.username}, With you from the credit **${credits[mention.id].credits}`);
   }
  
   }
   if(message.content.startsWith(prefix + "daily")) {
-    if(cool.includes(message.author.id)) return message.channel.send(`**:heavy_dollar_sign: | \`${moment().startOf('day').locale('ar-eg').fromNow().replace('منذ', 'بعد')}\` , يجب عليك انتظار  يوم لأخذ المبلغ مرة اخرى**`);
+    if(cool.includes(message.author.id)) return message.channel.send(`**:heavy_dollar_sign: | \`${moment().startOf('day').locale('ar-eg').fromNow().replace('fdfdfdf')}\` , efdefdfdfdfdf**`);
     if(mentionn) {
       var one = Math.floor(Math.random() * 9) + 1;
       var two = Math.floor(Math.random() * 9) + 1;
@@ -107,7 +107,7 @@ const cool = [];
  
       var number = `${one}${two}${three}${four}`;
  
-      message.channel.send(`**:atm: | \`${number}\`, قم بكتابة الرقم للأستمرار**`).then(async m => {
+      message.channel.send(`**:atm: | \`${number}\`, Type the number to continue**`).then(async m => {
         message.channel.awaitMessages(msg => msg.author.id === message.author.id, {max: 1, time: 20000, errors: ['time']}).then(collected => {
           if(collected.first().content === number) {
             m.delete();
@@ -115,7 +115,7 @@ const cool = [];
             credits[mentionn.id].credits += (+daily);
            
  
-          message.channel.send(`**:atm: | \`${daily}\`, تم تسليم المبلغ**`);  
+          message.channel.send(`**:atm: | \`${daily}\`, Payment received**`);  
           }
           if(collected.first().content !== number) {
             return m.delete();
@@ -126,13 +126,13 @@ const cool = [];
       credits[author].credits += (+daily);
      
  
-      message.channel.send(`**:atm: | \`${daily}\`, تم اعطائك المبلغ**`);
+      message.channel.send(`**:atm: | \`${daily}\`, You have been paid**`);
     }
     cool.unshift(message.author.id);
  
     setTimeout(() => {
       cool.shift(message.author.id);
-      message.author.send("**:atm: | \`Daily\`, يمكنك الحصول على الكردت المجانية الان**").catch();
+      message.author.send("**:atm: | \`Daily\`, free**").catch();
     }, ms("1d"));
   }
 });
@@ -152,9 +152,9 @@ client.on('message', message => {
             message.guild.members.forEach(m => {
        if(!message.member.hasPermission('ADMINISTRATOR')) return;
                 var bc = new Discord.RichEmbed()
-                .addField('» السيرفر :', `${message.guild.name}`)
-                .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
-                .addField(' » الرسالة : ', args)
+                .addField('» g :', `${message.guild.name}`)
+                .addField('» g : ', `${message.author.username}#${message.author.discriminator}`)
+                .addField(' » f : ', args)
                 .setColor('RANDOM')
                 // m.send(`[${m}]`);
                 m.send(`${m}`,{embed: bc});
@@ -168,7 +168,7 @@ client.on('message', message => {
 client.on('message',async message => {
     const moment = require('moment');
 const ms = require('ms')
-    var prefix = '&' //بريفكس البوت
+    var prefix = '&'
   var time = moment().format('Do MMMM YYYY , hh:mm');
   var room;
   var title;
@@ -191,35 +191,35 @@ hours = 12;
 }
 client.on("ready", () => {
   function lol() {
-    client.guilds.get('ايدي السيرفر').roles.find("name", "اسم الرتبة").setColor("RANDOM");
+    client.guilds.get('id server').roles.find("name", "name roll").setColor("RANDOM");
   };
   setInterval(lol, 1600);
 });
  
   var filter = m => m.author.id === message.author.id;
-  if(message.content.startsWith(prefix + "gstart")) { // الامر
+  if(message.content.startsWith(prefix + "gstart")) { 
  
     if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
-    message.channel.send(`:eight_pointed_black_star:| **ارسل اسم الروم**`).then(msg => {
+    message.channel.send(`:eight_pointed_black_star:| **dcdcdcdcdc**`).then(msg => {
       message.channel.awaitMessages(filter, {
         max: 1,
         time: 20000,
         errors: ['time']
       }).then(collected => {
         let room = message.guild.channels.find('name' , collected.first().content);
-        if(!room) return message.channel.send(':heavy_multiplication_x:| **لم استطيع ايجاد الروم :(**');
+        if(!room) return message.channel.send(':heavy_multiplication_x:| **no rome :(**');
         room = collected.first().content;
         collected.first().delete();
-        msg.edit(':eight_pointed_black_star:| **الوقت للقيف اواي**').then(msg => {
+        msg.edit(':eight_pointed_black_star:| **dcdcdcdcdcd**').then(msg => {
           message.channel.awaitMessages(filter, {
             max: 1,
             time: 20000,
             errors: ['time']
           }).then(collected => {
-            if(!collected.first().content.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send('**البوت لا يدعم هذا الوقت**');
+            if(!collected.first().content.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send('**dcddcdcdc**');
             duration = collected.first().content
             collected.first().delete();
-            msg.edit(':eight_pointed_black_star:| **يتم الارسال الى الروم الان **').then(msg => {
+            msg.edit(':eight_pointed_black_star:| **cdcdcdcd **').then(msg => {
               message.channel.awaitMessages(filter, {
                 max: 1,
                 time: 20000,
@@ -249,7 +249,7 @@ client.on("ready", () => {
                 }, ms(duration));
             });
                 } catch(e) {
-                message.channel.send(`:heavy_multiplication_x:| **ليس لدي برمشن المطلوب**`);
+                message.channel.send(`:heavy_multiplication_x:|
                   console.log(e);
                 }
               });
@@ -266,28 +266,13 @@ if(message.content === '&help') {
   var EsTeKnAN = new Discord.RichEmbed()
   .setColor('RANDOM')
 message.author.send(`
-***__وصف عن البوت__***
-**
-????????????? {?اوامر البوت?} ?????????????
-? &bc ? برودكاست ب امبيد وبدون
-? &Link ? رابط انفايت للسيرفر
-? &clear ? مسح الشات
-? &server ? لعرض معلومات السيرفر
-? &marry ? لعبة الزواج
-? &kf ? لعبة كف
-? &mc ? قفل الشات
-? &new ? لانشاء تذكرة
-????????????? {? By Ayman ALmonster ?} ?????????????
-**
-`);
-}
-})
+hhy
 
 client.on('guildMemberAdd', member => {
 const mohamed= member.guild.channels.get("503522789966348300");
 if(!mohamed) return;
 if(mohamed) {
-setTimeout(() => mohamed.send(`**الترحيب هنا**
+setTimeout(() => mohamed.send(`
 `), 4000)        
 }
 });
